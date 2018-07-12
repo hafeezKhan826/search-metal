@@ -1,0 +1,38 @@
+{namespace Filter}
+
+{template .render}
+{@param? close: ?}
+{@param? availableBrands: ?}
+{@param? availableRatings: ?}
+
+<div class="form-row">
+        {if $availableBrands.length>0}
+            
+                <h6>Filter on brands</h6>
+                {foreach $brand in  $availableBrands}
+		<br>
+                    <label>
+                       <input type="checkbox" data-onclick="{$close}" name="brand" value="{$brand}"> {$brand}
+                    </label> 
+                {/foreach}
+            
+        {/if}
+    </div>
+    <div class="form-row">
+        {if $availableRatings.length>0}
+                <br><h6>Filter on Ratings</h6>
+            {foreach $rating in  $availableRatings}
+                <br>
+                <label>
+                    <input type="checkbox" data-onclick="{$close}" name="rating" value="{$rating}"> {$rating}
+                </label>
+            {/foreach}
+
+        {/if}
+    </div>
+ 
+{/template}
+
+
+
+	

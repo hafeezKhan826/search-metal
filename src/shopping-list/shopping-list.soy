@@ -1,0 +1,32 @@
+{namespace ShoppingList}
+
+{template .render}
+    {@param? list:?}
+
+
+<div class="row container">
+	{foreach $item in $list}
+  <div class="col-md-3">
+    <div class="thumbnail">
+      <img src="{$item.image}" alt="{$item.productName}">
+      <div class="caption">
+        <h4>{$item.productName}</h4>
+        <p>{$item.brand}</p>
+        <p>
+          <span class="fa fa-star {($item.ratings >= 1)? 'checked' : 0 }"></span>
+          <span class="fa fa-star {($item.ratings >= 2)? 'checked' : 0 }"></span>
+          <span class="fa fa-star {($item.ratings >= 3)? 'checked' : 0 }"></span>
+          <span class="fa fa-star {($item.ratings >= 4)? 'checked' : 0 }"></span>
+          <span class="fa fa-star {($item.ratings >= 5)? 'checked' : 0 }"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+  {/foreach}
+</div>
+
+
+{/template}
+
+
+
