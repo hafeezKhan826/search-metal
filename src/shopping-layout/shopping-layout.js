@@ -7,7 +7,6 @@ import Ajax from 'metal-ajax';
 import * as _ from 'lodash';
 import './shopping-layout.scss';
 import '../searchbox/searchbox';
-import '../services/service';
 import '../filters/filter';
 import '../shopping-list/shopping-list';
 import {

@@ -29,4 +29,15 @@ can find it [here](https://nodejs.org).
 
 ## Contribute
 
-We'd love to get contributions from you! Please, check our [Contributing Guidelines](CONTRIBUTING.md) to see how you can help us improve.
+For API I have used a dummy online api at https://next.json-generator.com/api/json/get/41MRoCJ7H
+
+The filters used in this projects are picked dynamically based on brand and ratings
+
+The main components is 'shopping layout'(parent component) that renders other child components 
+
+  ► SearchBox component - the emits the entered search keyword to the parent
+  ► The parent component does the api call and sends data to the ShoppingList that lists out the items available.
+  ► Filters pick up the distinct brands and ratings; extracted by the parent
+  ► Selecting either of these filters changes the items display on the page in no matter what combination.
+  
+  

@@ -6,7 +6,6 @@ import Soy from 'metal-soy';
 
 import './assignment.scss';
 import './searchbox/searchbox';
-import './shop-item/shop-item';
 import './shopping-list/shopping-list';
 import './shopping-layout/shopping-layout';
 
