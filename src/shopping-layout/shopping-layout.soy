@@ -7,6 +7,10 @@
 {@param? availableBrands:?}
 {@param? availableRatings:?}
 {@param? filteredResult:?}
+{@param? noResultFound:?}
+{@param? noResultFoundKey:?}
+
+
 <div class="layout">
 
     <nav class="navbar navbar-inverse">
@@ -40,11 +44,14 @@
             </div>
 
         {else}
+            {if $noResultFound} 
             <div class="jumbotron container">
                 <h3>Welcome to Search Assignment</h3>
-                Please use the search field above to enter a keyword. Minimum 4 letters to do a search. <br>
+                Sorry no results found for key <b> '{$noResultFoundKey}' </b> <br>
                 They keyword actually does not make a difference, as the API that returns the data is static.
             </div>
+
+            {/if}
         {/if}              
         </div>  
             

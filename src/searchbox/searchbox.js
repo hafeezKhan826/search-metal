@@ -9,14 +9,7 @@ import './searchbox.scss';
 class SearchBox extends Component {
 	created() {}
 
-	submitOnEnter(event) {
-		if (event.keyCode == 13) {
-			this.performSearch();
-		}
-
-	}
-
-	performSearch() {
+	performSearch(event) {
 		this.searchText = document.getElementById('search').value;
 		this.emit('search', {
 			search: this.searchText

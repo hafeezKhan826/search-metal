@@ -28,35 +28,49 @@ class ShoppingLayout extends Component {
 		this.availableRatings = [];
 		this.brandFilter = [];
 		this.ratingFilter = [];
+		this.makeApiCall();
 	}
 
-	makeApiCall(searchKey) {
-		if (searchKey) {
-			Ajax.request('https://next.json-generator.com/api/json/get/41MRoCJ7H', 'get', searchKey, headers)
-				.then(xhrResponse => {
-					if (_.isString(xhrResponse.response)) {
-						this.result = JSON.parse(xhrResponse.response);
-						this.filteredResult = this.result;
-					} else {
-						this.result = xhrResponse.response;
-						this.filteredResult = this.result;
-						this.filterSearchResult();
-					}
-					this.generateFilters();
-				}, error => {
-					console.log('Error: ', error);
-				});
-		}
+	makeApiCall() {
+		Ajax.request('https://next.json-generator.com/api/json/get/41MRoCJ7H', 'get', null, headers)
+			.then(xhrResponse => {
+				if (_.isString(xhrResponse.response)) {
+					this.result = JSON.parse(xhrResponse.response);
+					this.filteredResult = this.result;
+				} else {
+					this.result = xhrResponse.response;
+					this.filteredResult = this.result;
+					// this.filterSearchResult();
+				}
+				this.generateFilters();
+			}, error => {
+				console.log('Error: ', error);
+			});
 	}
-
 
 	filterSearchResult() {
 		this.filteredResult.filter
 	}
 
-
 	handleSearch(event) {
-		this.makeApiCall(event.search);
+		var filterForSearch = [];
+		filterForSearch = this.result.filter(
+			element => {
+				if (element.category.toLowerCase() === event.search.toLowerCase()) {
+					return element;
+				}
+			}
+		);
+		if (filterForSearch.length > 0 && event.search !== '') {
+			this.filteredResult = filterForSearch;
+		} else if (filterForSearch.length === 0 && event.search == '') {
+			this.filteredResult = this.result;
+		} else if (filterForSearch.length === 0 && event.search !== '') {
+			this.filteredResult = [];
+			this.noResultFound = true;
+			this.noResultFoundKey = event.search;
+		}
+
 	}
 	handleFilterEmitter(event) {
 		this.filteredResult = this.result;
